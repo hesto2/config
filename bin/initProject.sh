@@ -35,7 +35,7 @@ else
   cd terraform && yarn init -y && cp ../.gitignore ./ && yarn add -D hesto2-terraform-modules
   cd ../
 fi
-cp $MODULE_DIR/gitignore ./.gitignore
+cp ./node_modules/@hesto2/config/gitignore ./.gitignore
 
 echo 'module.exports = {...require("@hesto2/config/.eslintrc.js")}' > .eslintrc.js
 
@@ -44,10 +44,10 @@ echo 'module.exports = {...require("@hesto2/config/prettier.config.js")}' >prett
 
 npx json -I -f package.json -e 'this.husky={ "hooks": { "pre-commit": "pretty-quick --staged" } }'
 
-if [ $ciValue == 1 ]; then
-  cp -r $MODULE_DIR/.circleci ./
+if [ $ciValue == 1 ] then
+  cp -r ./node_modules/@hesto2/config/.circleci ./
 else
-  cp $MODULE_DIR/.travis.yml /
+  cp ./node_modules/@hesto2/config/.travis.yml /
 fi
 
 echo "Done 🎉🎉"
