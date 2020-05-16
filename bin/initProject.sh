@@ -44,7 +44,7 @@ echo 'module.exports = {...require("@hesto2/config/prettier.config.js")}' >prett
 
 npx json -I -f package.json -e 'this.husky={ "hooks": { "pre-commit": "pretty-quick --staged" } }'
 
-if [ $ciValue == 1 ] then
+if [ $ciValue == 1 ]; then
   cp -r ./node_modules/@hesto2/config/.circleci ./
 else
   cp ./node_modules/@hesto2/config/.travis.yml /
