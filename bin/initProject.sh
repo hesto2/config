@@ -28,7 +28,7 @@ else
   ]'
   npx json -I -f tsconfig.json -e 'this.outDir = "./dist"'
   npx json -I -f package.json -e 'this.scripts = {"watch": "yarn cross-env NODE-ENV=development nodemon -e ts --exec ts-node ./src/index.ts", "test": "jest ./src", "prebuild": "rm -rf ./dist/; mkdir ./dist", "build": "tsc && cp package.json ./dist && cd ./dist && yarn install --prod && cd ../"}'
-  echo "module.exports = {...require(@hesto2/config/jest.config.js)}" >jest.config.js
+  echo "module.exports = {...require("@hesto2/config/jest.config.js")}" >jest.config.js
 
   mkdir terraform
   mkdir src
@@ -37,10 +37,10 @@ else
   cd ../
 fi
 
-echo "module.exports = {...require(@hesto2/config/.eslintrc.js)}" >.eslintrc.js
+echo "module.exports = {...require("@hesto2/config/.eslintrc.js")}" >.eslintrc.js
 
 yarn add prettier pretty-quick husky eslint -D
-echo "module.exports = {...require(@hesto2/config/prettier.config.js)}" >prettier.config.js
+echo "module.exports = {...require("@hesto2/config/prettier.config.js")}" >prettier.config.js
 
 npx json -I -f package.json -e 'this.husky={ "hooks": { "pre-commit": "pretty-quick --staged" } }'
 
