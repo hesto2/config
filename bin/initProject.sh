@@ -7,7 +7,6 @@ echo "React project? y/n"
 read reactValue
 
 git init
-cp $MODULE_DIR/gitignore ./.gitignore
 
 if [ $reactValue == 'y' ]; then
   # Config for a react app
@@ -36,6 +35,7 @@ else
   cd terraform && yarn init -y && cp ../.gitignore ./ && yarn add -D hesto2-terraform-modules
   cd ../
 fi
+cp $MODULE_DIR/gitignore ./.gitignore
 
 echo 'module.exports = {...require("@hesto2/config/.eslintrc.js")}' > .eslintrc.js
 
