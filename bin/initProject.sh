@@ -7,7 +7,7 @@ echo "React project? y/n"
 read reactValue
 
 git init
-cp $MODULE_DIR/.gitignore ./
+cp $MODULE_DIR/gitignore ./.gitignore
 
 if [ $reactValue == 'y' ]; then
   # Config for a react app
