@@ -27,11 +27,7 @@ else
     "src/**/*"
   ]'
   npx json -I -f tsconfig.json -e 'this.outDir = "./dist"'
-  npx json -I -f package.json -e 'this.scripts = {"watch": "yarn cross-env NODE-ENV=development nodemon -e ts --exec ts-node ./src/index.ts",
-   "test": "jest ./src",
-    "prebuild": "rm -rf ./dist"
-    "build": "tsc && cp package.json ./dist && cd ./dist && yarn install --prod && cd ../"
-    }'
+  npx json -I -f package.json -e 'this.scripts = {"watch": "yarn cross-env NODE-ENV=development nodemon -e ts --exec ts-node ./src/index.ts", "test": "jest ./src", "prebuild": "rm -rf ./dist/; mkdir ./dist", "build": "tsc && cp package.json ./dist && cd ./dist && yarn install --prod && cd ../"}'
   echo "module.exports = {...require(@hesto2/config/jest.config.js)}" >jest.config.js
 
   mkdir terraform
