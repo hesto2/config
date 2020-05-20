@@ -23,7 +23,8 @@ else
   yarn add -D nodemon typescript ts-node jest ts-jest cross-env @hesto2/config
   npx json -I -f tsconfig.json -e 'this.extends = "./node_modules/@hesto2/config/tsconfig.json"'
   npx json -I -f tsconfig.json -e 'this.include = [
-    "src/**/*"
+    "src/**/*",
+    "src/*",
   ]'
   npx json -I -f tsconfig.json -e 'this.outDir = "./dist"'
   npx json -I -f package.json -e 'this.scripts = {"watch": "yarn cross-env NODE-ENV=development nodemon -e ts --exec ts-node ./src/index.ts", "test": "jest ./src", "prebuild": "rm -rf ./dist/; mkdir ./dist", "build": "tsc && cp package.json ./dist && cd ./dist && yarn install --prod && cd ../"}'
