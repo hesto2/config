@@ -9,6 +9,9 @@ jobs:
           name: Install dependencies
           command: yarn
       - run:
+          name: Test
+          command: yarn test
+      - run:
           name: Build
           command: yarn build
       - run:
@@ -22,6 +25,5 @@ workflows:
       - build:
           context: hesto2-npm
           filters:
-            branches:
-              only:
-                - master
+            tags:
+              only: /.*/
