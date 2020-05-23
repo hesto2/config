@@ -27,7 +27,14 @@ else
     "src/*",
   ]'
   npx json -I -f tsconfig.json -e 'this.compilerOptions = {outDir: "./dist"}'
-  npx json -I -f package.json -e 'this.scripts = {"watch": "yarn cross-env NODE-ENV=development nodemon -e ts --exec ts-node ./src/index.ts", "test": "jest ./src", "prebuild": "rm -rf ./dist/; mkdir ./dist", "build": "tsc && cp package.json ./dist && cd ./dist && yarn install --prod && cd ../"}'
+  npx json -I -f package.json -e 'this.scripts = {
+    "watch": "yarn cross-env NODE-ENV=development nodemon -e ts --exec ts-node ./src/index.ts", 
+    "test": "jest ./src", 
+    "prebuild": "rm -rf ./dist/; mkdir ./dist", 
+    "build": "tsc && cp package.json ./dist && cd ./dist && yarn install --prod && cd ../",
+    "predeploy": "cd ./dist && yarn install --prod && zip -q -r ../terraform/deploy.zip ./",
+    "deploy": "cd ./terraform && npm install && terraform init && terraform apply -auto-approve"
+    }'
   echo 'module.exports = {...require("@hesto2/config/jest.config.js")}' > jest.config.js
 
   mkdir terraform
@@ -46,7 +53,7 @@ echo 'module.exports = {...require("@hesto2/config/prettier.config.js")}' >prett
 npx json -I -f package.json -e 'this.husky={ "hooks": { "pre-commit": "pretty-quick --staged" } }'
 
 if [ $ciValue = 1 ]; then
-  cp -r ./node_modules/@hesto2/config/.circleci ./
+  cp -r ./node_modules/@hesto2/config/circleci ./.circle
 else
   cp ./node_modules/@hesto2/config/.travis.yml /
 fi

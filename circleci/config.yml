@@ -14,18 +14,16 @@ jobs:
           command: |
             CI="" yarn build
       - run:
-          name: Authenticate with registry
-          command: echo "//packagecloud.io/armando/node-test-package/npm/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
-      - run:
-          name: Publish package
-          command: npm publish
+          name: Deploy to prod
+          command: |
+            yarn deploy
 
 workflows:
   version: 2
   build:
     jobs:
       - build:
-          context: hesto2-npm
+          context: hesto2-aws
           filters:
             branches:
               only:
