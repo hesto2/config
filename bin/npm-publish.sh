@@ -1,2 +1,3 @@
-npx npm-cli-login -u $NPM_USER -p $NPM_PASSWORD -e $NPM_EMAIL
+npx npm-cli-login
+cp ~/.npmrc ~/project/.npmrc
 npm publish --access=public

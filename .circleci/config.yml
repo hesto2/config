@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Publish package
-          command: sh ./bin/npm-publish
+          command: sh ./bin/npm-publish.sh
 
 workflows:
   version: 2
