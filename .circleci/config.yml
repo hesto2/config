@@ -6,11 +6,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/project/.npmrc
-      - run:
           name: Publish package
-          command: npm publish --access=public
+          command: sh ./bin/npm-publish
 
 workflows:
   version: 2

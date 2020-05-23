@@ -6,11 +6,17 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Build
+          command: yarn build
+      - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/project/.npmrc
       - run:
           name: Publish package
-          command: npm publish --access=public
+          command: cd dist && npm publish --access=public
 
 workflows:
   version: 2

@@ -3,6 +3,8 @@ MODULE_DIR=./node_modules/@hesto2/config
 echo "Circle CI (1) or Travis (2):"
 read ciValue
 
+# TODO: add support for indicating if this is publishable or not
+
 echo "React project? y/n"
 read reactValue
 
