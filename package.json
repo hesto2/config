@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "npm publish --access=public"
   },
-  "bin": {
+  "bin": { 
     "hesto2-initProject": "./bin/initProject.sh"
   },
   "author": "Carter Hesterman <carter.hesterman@lifeomic.com>",
