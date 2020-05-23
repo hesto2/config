@@ -1,6 +1,6 @@
 {
   "name": "@hesto2/config",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "preferred configurations for various libs",
   "main": "index.js",
   "scripts": {
