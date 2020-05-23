@@ -16,6 +16,8 @@ workflows:
       - build:
           context: hesto2-npm
           filters:
+            tags:
+              only: /^v.*/
             branches:
               only:
                 - master
