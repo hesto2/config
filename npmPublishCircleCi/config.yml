@@ -16,7 +16,7 @@ jobs:
           command: yarn build
       - run:
           name: Publish package
-          command: cd dist && sh ./node_modules/@hesto2/config/bin/npm-publish.sh
+          command: cd ./dist && sh ../node_modules/.bin/npm-publish
 
 workflows:
   version: 2
@@ -26,8 +26,4 @@ workflows:
           context: hesto2-npm
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: 
-                - /^v[0-9]++.[0-9]++.[0-9]++$
-                
+              only: master
