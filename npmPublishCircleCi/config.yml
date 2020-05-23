@@ -13,7 +13,7 @@ jobs:
           command: yarn build
       - run:
           name: Publish package
-          command: cd dist && yarn npm-publish
+          command: cd dist && sh ./node_modules/@hesto2/config/bin/npm-publish.sh
 
 workflows:
   version: 2
