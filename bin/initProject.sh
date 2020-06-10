@@ -22,7 +22,7 @@ else
   # Config for a node app
   yarn init -y
   echo "{}" >tsconfig.json
-  yarn add -D nodemon typescript ts-node jest ts-jest cross-env @hesto2/config
+  yarn add -D nodemon typescript ts-node jest ts-jest @types/jest cross-env @hesto2/config @types/jest eslint
   npx json -I -f tsconfig.json -e 'this.extends = "./node_modules/@hesto2/config/tsconfig.json"'
   npx json -I -f tsconfig.json -e 'this.include = [
     "src/**/*",
@@ -49,10 +49,13 @@ cp ./node_modules/@hesto2/config/gitignore ./.gitignore
 
 echo 'module.exports = {...require("@hesto2/config/.eslintrc.js")}' > .eslintrc.js
 
-yarn add prettier pretty-quick husky eslint -D
+yarn add prettier pretty-quick -D
 echo 'module.exports = {...require("@hesto2/config/prettier.config.js")}' >prettier.config.js
 
 npx json -I -f package.json -e 'this.husky={ "hooks": { "pre-commit": "pretty-quick --staged" } }'
+
+yarn add -D husky
+yarn add dotenv
 
 if [ $ciValue = 1 ]; then
   cp -r ./node_modules/@hesto2/config/circleci ./.circleci
