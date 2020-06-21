@@ -37,7 +37,6 @@ else
     "predeploy": "cd ./dist && yarn install --prod && zip -q -r ../terraform/deploy.zip ./",
     "deploy": "cd ./terraform && npm install && terraform init && terraform apply -auto-approve"
     }'
-  echo 'module.exports = {...require("@hesto2/config/jest.config.js")}' > jest.config.js
 
   mkdir terraform
   mkdir src
@@ -45,6 +44,8 @@ else
   cd terraform && yarn init -y && cp ../.gitignore ./ && yarn add -D hesto2-terraform-modules
   cd ../
 fi
+
+echo 'module.exports = {...require("@hesto2/config/jest.config.js")}' > jest.config.js
 cp ./node_modules/@hesto2/config/gitignore ./.gitignore
 
 echo 'module.exports = {...require("@hesto2/config/.eslintrc.js")}' > .eslintrc.js
