@@ -10,6 +10,7 @@
   "bin": {
     "initProject": "./bin/initProject.sh",
     "npm-publish": "./bin/npm-publish.sh",
+    "npm-publish-private": "./bin/npm-publish-private.sh",
     "npm-login": "./bin/npm-login.sh"
   },
   "author": "Carter Hesterman <hestermancarter@gmail.com>",
