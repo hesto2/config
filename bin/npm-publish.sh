@@ -5,7 +5,7 @@ cp ~/.npmrc ~/project/.npmrc
 cd ~/project
 if [ $# -eq 1 ]
   then
-    echo test
+    echo "publishing in $1"
     cd $1
 fi 
 npm publish --access=public
