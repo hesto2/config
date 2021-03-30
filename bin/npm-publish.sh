@@ -3,6 +3,9 @@ echo starting publish
 npx npm-cli-login
 cp ~/.npmrc ~/project/.npmrc
 cd ~/project
-ls
-cd $1
+if [ $# -eq 1 ]
+  then
+    echo test
+    cd $1
+fi 
 npm publish --access=public
