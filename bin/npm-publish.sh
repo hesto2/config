@@ -1,6 +1,6 @@
 #!/bin/bash
 echo starting publish
-npx npm-cli-login
+echo //registry.npmjs.org/:_authToken=$NPM_TOKEN >> ~/.npmrc
 cp ~/.npmrc ~/project/.npmrc
 cd ~/project
 if [ $# -eq 1 ]
